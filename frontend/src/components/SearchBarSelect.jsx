@@ -11,14 +11,17 @@ const SearchableSelect = ({ options, onSelect }) => {
 
   useEffect(() => {
     // Filter options based on search term
-    const filtered = options.filter(option =>
-      option.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )// Limit to the first 10 filtered options
+    const filtered = options.filter(option => {
+      return typeof option.name === 'string' && option.name.toLowerCase().includes(searchTerm.toLowerCase());
+    }).slice(0, 10); // Limit to the first 10 filtered options
+  
+    // Update state with filtered options
     setFilteredOptions(filtered);
   }, [searchTerm, options]);
+  
 
   const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value);  
   };
 
   const handleOptionClick = (option) => {

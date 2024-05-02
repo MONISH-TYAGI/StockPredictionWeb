@@ -40,11 +40,15 @@ const StockDataApp = () => {
             endDate: endDate,
           }),
         });
-  
+       console.log("frontend response"+response)
         if (response.ok) {
+          console.log("response ok")
           const data = await response.json();
+          console.log(data);
           const stockSymbol= selectedStock.symbol+".NS";
-          const stockData= data.data[stockSymbol];
+          console.log(stockSymbol)
+          const stockData= data.data;
+          console.log(stockData)
           setStockData(stockData);
           // console.log(stockData);
         } else if(startDate>endDate) {

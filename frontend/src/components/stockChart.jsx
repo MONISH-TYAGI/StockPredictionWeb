@@ -9,7 +9,7 @@ const StockChart = ({ stockData=[], startDate=[], endDate=[], selectedStock=[], 
 
   useEffect(() => {
     let myChart = null;
-
+   console.log("stock chart")
     if (chartRef.current && stockData) {
       const ctx = chartRef.current.getContext('2d');
 
